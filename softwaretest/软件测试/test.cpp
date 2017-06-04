@@ -9,7 +9,7 @@ int main()
 	cin>>X;
 	cout<<"请输入你的期望值:";
 	cin>>Y;
-	if(A<=1 && B==0)
+	if(A>=1 && B==0)
 		X=X/A;
 	if((A==2)||(X>1))
 		X=X+1;
