@@ -1,0 +1,42 @@
+/*
+create table S(SNO char(10),SNAME char(10),STATUS int,CITY char(10),primary key(SNO));
+create table P(PNO char(10) primary key,PNAME char(10),COLOR char(10),WEIGHT int);
+create table J(JNO char(10) primary key,JNAME char(10),CITY char(10));
+create table SPJ(SNO char(10),PNO char(10),JNO char(10),QTY int,foreign key(SNO) references S(SNO),foreign key(PNO) references P(PNO),foreign key(JNO) references J(JNO));
+*/
+
+/*
+1-3
+SELECT SNAME,CITY FROM S;
+SELECT PNAME,COLOR,WEIGHT FROM P;
+SELECT JNO FROM SPJ WHERE SNO='S1';
+*/
+
+/*4-6
+SELECT PNAME,QTY FROM SPJ,P WHERE P.PNO=SPJ.PNO AND JNO='J2';
+SELECT PNO FROM SPJ WHERE SNO IN(SELECT SNO FROM S WHERE CITY='上海');  
+SELECT JNAME FROM J WHERE JNO IN(SELECT JNO FROM SPJ WHERE SNO IN (SELECT SNO FROM S WHERE CITY='上海'));
+*/
+
+/*7-9
+SELECT JNO FROM J WHERE JNO NOT IN (SELECT DISTINCT JNO FROM S,SPJ WHERE S.SNO=SPJ.SNO AND S.CITY='天津');
+UPDATE P SET color='蓝色' WHERE COLOR='红'; 
+UPDATE SPJ SET SNO='S3' WHERE SNO='S5' AND JNO='J4' AND PNO='P6';
+*/
+
+/*
+delete SPJ where sno='s4';
+delete S where sno='s4';
+*/
+
+insert into SPJ(SNO,PNO,JNO,QTY) values('S2','P4','J6','200');
+
+
+
+
+
+
+视图：
+create view IS_Project as select SNO,PNO,QTY from SPJ;
+select PNO,QTY from IS_Project;
+select PNO,QTY from IS_Project where SNO='S1'; 
