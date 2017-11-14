@@ -45,7 +45,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
  
  
 可以输入：
-git push -f 
+git push origin master -f
 可以ok了.
 10 克隆代码
 git clone git@github..com:用户名/项目名.git
